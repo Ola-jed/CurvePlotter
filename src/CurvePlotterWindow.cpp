@@ -31,11 +31,13 @@ void CurvePlotterWindow::buildStatusBar()
     statusBar->showMessage("No function");
     zoomPlus  = new QPushButton(QIcon{":assets/plus.png"}, "", this);
     zoomMinus = new QPushButton(QIcon{":assets/minus.png"}, "", this);
+    zoomPlus->setAutoRepeat(true);
+    zoomMinus->setAutoRepeat(true);
     auto widget = new QWidget();
     auto layout = new QGridLayout(widget);
-    layout->setContentsMargins(0,0,0,0);
-    layout->addWidget(zoomPlus,0,0,1,1,Qt::AlignVCenter | Qt::AlignLeft);
-    layout->addWidget(zoomMinus,0,1,1,1,Qt::AlignVCenter | Qt::AlignRight);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(zoomPlus, 0, 0, 1, 1, Qt::AlignVCenter | Qt::AlignLeft);
+    layout->addWidget(zoomMinus, 0, 1, 1, 1, Qt::AlignVCenter | Qt::AlignRight);
     statusBar->addPermanentWidget(widget);
     setStatusBar(statusBar);
 }
@@ -50,10 +52,10 @@ void CurvePlotterWindow::makeConnections()
     connect(aboutQt, &QAction::triggered, [this] {
         QMessageBox::aboutQt(this);
     });
-    connect(zoomPlus,&QPushButton::clicked,[this] {
+    connect(zoomPlus, &QPushButton::clicked, [this] {
         chart->zoomIn();
     });
-    connect(zoomMinus,&QPushButton::clicked,[this] {
+    connect(zoomMinus, &QPushButton::clicked, [this] {
         chart->zoomOut();
     });
 }
@@ -102,7 +104,7 @@ void CurvePlotterWindow::initBaseFunctions()
 void CurvePlotterWindow::handleBaseFunctions(const BaseFunctions &funcName)
 {
     std::function<double(double)> func;
-    const auto                    funcTitle = BASE_FUNCTIONS_SYMBOLS.value(funcName);
+    const auto funcTitle = BASE_FUNCTIONS_SYMBOLS.value(funcName);
     chart->setTitle(funcTitle);
     statusBar->showMessage(funcTitle);
     switch (funcName)

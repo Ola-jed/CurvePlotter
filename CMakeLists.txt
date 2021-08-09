@@ -12,7 +12,7 @@ set(QT_VERSION 5)
 set(REQUIRED_LIBS Core Gui Widgets )
 set(REQUIRED_LIBS_QUALIFIED Qt${QT_VERSION}::Core Qt${QT_VERSION}::Gui Qt${QT_VERSION}::Widgets Qt5::Charts)
 
-add_executable(CurvePlotter main.cpp src/CurvePlotterWindow.cpp include/CurvePlotterWindow.hpp include/BaseFunctions.hpp src/CurvePlotterSettings.cpp include/CurvePlotterSettings.hpp resources.qrc src/AboutCurvePlotter.cpp include/AboutCurvePlotter.hpp)
+add_executable(CurvePlotter main.cpp src/CurvePlotterWindow.cpp include/CurvePlotterWindow.hpp include/BaseFunctions.hpp src/CurvePlotterSettings.cpp include/CurvePlotterSettings.hpp resources.qrc src/AboutCurvePlotter.cpp include/AboutCurvePlotter.hpp src/CustomFunctionDialog.cpp include/CustomFunctionDialog.hpp)
 
 include_directories(${CurvePlotter_SOURCE_DIR}/include)
 find_package(Qt${QT_VERSION} COMPONENTS ${REQUIRED_LIBS} REQUIRED)

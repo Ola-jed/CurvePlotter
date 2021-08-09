@@ -3,11 +3,11 @@
 AboutCurvePlotter::AboutCurvePlotter(QWidget *parent) : QDialog(parent)
 {
     setWindowTitle("About");
-    setFixedSize(400, 150);
+    setFixedSize(400, 160);
     logo = new QLabel("", this);
     logo->setPixmap(QPixmap{":assets/icon.png"});
     logo->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-    aboutText = new QLabel("CurvePlotter is a software written in Qt5 with Qt Chart under<br>"
+    aboutText = new QLabel("CurvePlotter is a software written in Qt5 with Qt Chart<br>"
                            "GPL license<br>"
                            "Github: <a href=\"https://github.com/Ola-jed/CurvePlotter\">https://github.com/Ola-jed/CurvePlotter</a>",
                            this);

@@ -42,11 +42,11 @@ void CurvePlotterWindow::buildStatusBar()
     setStatusBar(statusBar);
 }
 
-
 /// Make the connections for menu actions and for statusbar buttons
 void CurvePlotterWindow::makeConnections()
 {
     connect(settings, &QAction::triggered, this, &CurvePlotterWindow::onSettings);
+    connect(customFunction, &QAction::triggered, this, &CurvePlotterWindow::onCustomFunction);
     connect(save, &QAction::triggered, this, &CurvePlotterWindow::onSave);
     connect(aboutCP, &QAction::triggered, this, &CurvePlotterWindow::onAbout);
     connect(aboutQt, &QAction::triggered, [this] {
@@ -104,7 +104,7 @@ void CurvePlotterWindow::initBaseFunctions()
 void CurvePlotterWindow::handleBaseFunctions(const BaseFunctions &funcName)
 {
     std::function<double(double)> func;
-    const auto funcTitle = BASE_FUNCTIONS_SYMBOLS.value(funcName);
+    const auto                    funcTitle = BASE_FUNCTIONS_SYMBOLS.value(funcName);
     chart->setTitle(funcTitle);
     statusBar->showMessage(funcTitle);
     switch (funcName)
@@ -272,4 +272,11 @@ void CurvePlotterWindow::onAbout()
 {
     auto aboutDialog = new AboutCurvePlotter(this);
     aboutDialog->show();
+}
+
+/// Show the dialog with an input to let the user enter a custom function
+void CurvePlotterWindow::onCustomFunction()
+{
+    auto customFunctionDialog = new CustomFunctionDialog(this);
+    customFunctionDialog->show();
 }

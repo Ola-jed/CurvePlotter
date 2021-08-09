@@ -36,19 +36,19 @@ enum BaseFunctions
 
 /// Mapping between functions names and their symbols
 const QMap<BaseFunctions, QString> BASE_FUNCTIONS_SYMBOLS{
-        {CONSTANT, "x"},
-        {QUADRATIC, "x²"},
-        {CUBIC, "x³"},
+        {CONSTANT,    "x"},
+        {QUADRATIC,   "x²"},
+        {CUBIC,       "x³"},
         {SQUARE_ROOT, "√x"},
-        {CUBIC_ROOT, "∛x"},
-        {INVERSE, "1/x"},
-        {EXP, "exp"},
-        {LOG, "log"},
-        {COS, "cos"},
-        {SIN, "sin"},
-        {TAN, "tan"},
-        {ACOS, "acos"},
-        {ASIN, "asin"}
+        {CUBIC_ROOT,  "∛x"},
+        {INVERSE,     "1/x"},
+        {EXP,         "exp"},
+        {LOG,         "log"},
+        {COS,         "cos"},
+        {SIN,         "sin"},
+        {TAN,         "tan"},
+        {ACOS,        "acos"},
+        {ASIN,        "asin"}
 };
 
 #endif //CURVEPLOTTER_BASEFUNCTIONS_HPP

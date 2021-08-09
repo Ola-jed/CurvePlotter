@@ -12,7 +12,6 @@
 #include <functional>
 #include <QChartView>
 #include <QStatusBar>
-#include <QMessageBox>
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QApplication>
@@ -20,36 +19,37 @@
 #include <QGuiApplication>
 #include "BaseFunctions.hpp"
 #include "AboutCurvePlotter.hpp"
+#include "CustomFunctionDialog.hpp"
 #include "CurvePlotterSettings.hpp"
 
 using namespace QtCharts;
 
-class CurvePlotterWindow: public QMainWindow
+class CurvePlotterWindow : public QMainWindow
 {
 public:
     CurvePlotterWindow();
 private:
-    QMenu *functions;
-    QMenu *baseFunctions;
-    QMenu *about;
-    QAction *customFunction;
-    QAction *save;
-    QAction *settings;
-    QAction *aboutCP;
-    QAction *aboutQt;
-    QStatusBar *statusBar;
-    QChart *chart;
-    QChartView *chartView;
-    QSettings appSettings;
+    QMenu       *functions;
+    QMenu       *baseFunctions;
+    QMenu       *about;
+    QAction     *customFunction;
+    QAction     *save;
+    QAction     *settings;
+    QAction     *aboutCP;
+    QAction     *aboutQt;
+    QStatusBar  *statusBar;
+    QChart      *chart;
+    QChartView  *chartView;
+    QSettings   appSettings;
     QPushButton *zoomPlus;
     QPushButton *zoomMinus;
 
     static constexpr int DEFAULT_PRECISION = 29;
-    static constexpr int DEFAULT_MIN = 0;
-    static constexpr int DEFAULT_MAX = 10;
-    int precision = appSettings.value("precision",DEFAULT_PRECISION).toInt();
-    int min = appSettings.value("minRange",DEFAULT_MIN).toInt();
-    int max = appSettings.value("maxRange",DEFAULT_MAX).toInt();
+    static constexpr int DEFAULT_MIN       = 0;
+    static constexpr int DEFAULT_MAX       = 10;
+    int                  precision         = appSettings.value("precision", DEFAULT_PRECISION).toInt();
+    int                  min               = appSettings.value("minRange", DEFAULT_MIN).toInt();
+    int                  max               = appSettings.value("maxRange", DEFAULT_MAX).toInt();
     void buildChart();
     void buildMenuBar();
     void buildStatusBar();
@@ -63,7 +63,7 @@ private slots:
     void onSettings();
     void onSave();
     void onAbout();
+    void onCustomFunction();
 };
-
 
 #endif //CURVEPLOTTER_CURVEPLOTTERWINDOW_HPP

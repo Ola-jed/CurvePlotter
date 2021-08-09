@@ -13,7 +13,8 @@ class CurvePlotterSettings : public QDialog
 Q_OBJECT
 
 public:
-    explicit CurvePlotterSettings(QWidget *parent,int precision,int minRange,int maxRange,int animation,int theme);
+    explicit CurvePlotterSettings(QWidget *parent, int precision, int minRange, int maxRange, int animation,
+                                  int theme);
 
 private:
     QSlider     *precisionSlider;

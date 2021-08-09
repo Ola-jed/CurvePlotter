@@ -14,7 +14,7 @@ set(REQUIRED_LIBS_QUALIFIED Qt${QT_VERSION}::Core Qt${QT_VERSION}::Gui Qt${QT_VE
 
 add_executable(CurvePlotter main.cpp src/CurvePlotterWindow.cpp include/CurvePlotterWindow.hpp include/BaseFunctions.hpp src/CurvePlotterSettings.cpp include/CurvePlotterSettings.hpp resources.qrc src/AboutCurvePlotter.cpp include/AboutCurvePlotter.hpp src/CustomFunctionDialog.cpp include/CustomFunctionDialog.hpp)
 
-include_directories(${CurvePlotter_SOURCE_DIR}/include)
+include_directories(${CurvePlotter_SOURCE_DIR}/include ${CurvePlotter_SOURCE_DIR}/lib)
 find_package(Qt${QT_VERSION} COMPONENTS ${REQUIRED_LIBS} REQUIRED)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
 

@@ -6,14 +6,14 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-class AboutCurvePlotter: public QDialog
+class AboutCurvePlotter : public QDialog
 {
 public:
     explicit AboutCurvePlotter(QWidget *parent);
 
 private:
-    QLabel *logo;
-    QLabel *aboutText;
+    QLabel      *logo;
+    QLabel      *aboutText;
     QPushButton *ok;
 };
 

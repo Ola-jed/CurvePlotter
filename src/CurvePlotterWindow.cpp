@@ -198,8 +198,8 @@ void CurvePlotterWindow::plotBaseFunction(const std::function<double(double)> &f
     auto const step = (max - usableMin) * 1. / precision;
     chart->addSeries(new QSplineSeries(this));
     chart->createDefaultAxes();
-    chart->axes(Qt::Vertical).last()->setRange(-max, max);
-    chart->axes(Qt::Horizontal).last()->setRange(-max, max);
+    chart->axes(Qt::Vertical).last()->setRange(usableMin, max);
+    chart->axes(Qt::Horizontal).last()->setRange(usableMin, max);
     auto x = usableMin * 1.0;
     while (x <= max)
     {
@@ -214,8 +214,8 @@ void CurvePlotterWindow::plotBaseFunction(const std::function<double(double)> &f
             // We have a blank, so we create a new series
             chart->addSeries(new QSplineSeries(this));
             chart->createDefaultAxes();
-            chart->axes(Qt::Vertical).last()->setRange(-max, max);
-            chart->axes(Qt::Horizontal).last()->setRange(-max, max);
+            chart->axes(Qt::Vertical).last()->setRange(usableMin, max);
+            chart->axes(Qt::Horizontal).last()->setRange(usableMin, max);
         }
         x += step;
     }

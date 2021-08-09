@@ -12,7 +12,6 @@
 #include <functional>
 #include <QChartView>
 #include <QStatusBar>
-#include <QPushButton>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QMainWindow>

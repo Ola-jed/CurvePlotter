@@ -15,5 +15,14 @@ make
 ./CurvePlotter
 ```
 
+## Screenshots
+
+### Basic function
+![cos](https://user-images.githubusercontent.com/66482155/128863777-e37b622d-2883-4313-9a2e-3e943364e92a.png)
+
+### Custom function
+![Screenshot_20210810_130347](https://user-images.githubusercontent.com/66482155/128863860-5592f72e-cb3b-4be6-927a-a304e32d5aff.png)
+
+
 ## Credits
 [exprtk](https://github.com/ArashPartow/exprtk)

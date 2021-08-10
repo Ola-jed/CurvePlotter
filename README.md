@@ -1,5 +1,5 @@
 # CurvePlotter
-Curve Plotter is a basic program made with Qt to plot functions
+Curve Plotter (CP) is a basic program made with Qt to plot functions
 
 You can have the drawing of basic functions or enter your custom function
 

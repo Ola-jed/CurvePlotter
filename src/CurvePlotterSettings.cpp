@@ -8,6 +8,7 @@ CurvePlotterSettings::CurvePlotterSettings(QWidget *parent, int precision, int m
                                                                        animationIndex(animation)
 {
     setFixedSize(800, 250);
+    setWindowTitle("CP Settings");
     buildComponents();
     initComponents();
     makeConnections();

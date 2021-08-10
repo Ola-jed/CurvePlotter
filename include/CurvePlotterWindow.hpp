@@ -60,6 +60,7 @@ private:
 private slots:
     void handleBaseFunctions(const BaseFunctions &funcName);
     void plotBaseFunction(const std::function<double(double)> &func);
+    void plotCustomFunction(exprtk::expression<double> &expression, double &usedValue);
     void onSettings();
     void onSave();
     void onAbout();

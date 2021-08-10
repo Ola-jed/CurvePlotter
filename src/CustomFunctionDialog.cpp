@@ -15,10 +15,12 @@ CustomFunctionDialog::CustomFunctionDialog(QWidget *parent) : QDialog(parent)
 }
 
 /// Validate the function entered by the user
+/// If good emits a signal captured by the main window to plot the function
+/// Else an error message is show to the user
 void CustomFunctionDialog::validateFunction()
 {
     const auto                   expression_string{functionEdit->text().toStdString()};
-    double                       x;
+    double                       x = 0;
     exprtk::symbol_table<double> symbol_table;
     symbol_table.add_variable("x", x);
     symbol_table.add_constants();
@@ -27,11 +29,8 @@ void CustomFunctionDialog::validateFunction()
     exprtk::parser<double> parser;
     if (!parser.compile(expression_string, expression))
     {
-
+        QMessageBox::warning(this, "Function", "Cannot parse function");
+        return;
     }
-    for (x = static_cast<double>(-5); x <= 5; x += static_cast<double>(0.001))
-    {
-        double y = expression.value();
-        printf("%19.15f\t%19.15f\n", x, y);
-    }
+    emit functionValidated(expression, x);
 }

@@ -101,6 +101,7 @@ void CurvePlotterWindow::initBaseFunctions()
 
 /// Handle base functions actions trigger
 /// Generate the appropriate lambda for plotting
+/// \param funcName
 void CurvePlotterWindow::handleBaseFunctions(const BaseFunctions &funcName)
 {
     std::function<double(double)> func;
@@ -191,6 +192,7 @@ void CurvePlotterWindow::handleBaseFunctions(const BaseFunctions &funcName)
 /// If the function is not continuous, we create and other graph
 /// We get the range of the chart (x and y)
 /// And divide by the precision to draw the points
+/// \param func
 void CurvePlotterWindow::plotBaseFunction(const std::function<double(double)> &func)
 {
     const auto usableMin = -1 * min;
@@ -278,5 +280,40 @@ void CurvePlotterWindow::onAbout()
 void CurvePlotterWindow::onCustomFunction()
 {
     auto customFunctionDialog = new CustomFunctionDialog(this);
+    connect(customFunctionDialog, &CustomFunctionDialog::functionValidated,this, &CurvePlotterWindow::plotCustomFunction);
     customFunctionDialog->show();
+}
+
+/// Plot a custom function entered by the user
+/// \param expression
+/// \param usedValue
+void CurvePlotterWindow::plotCustomFunction(exprtk::expression<double> &expression, double &usedValue)
+{
+    const auto usableMin = -1 * min;
+    chart->removeAllSeries();
+    auto const step = (max - usableMin) * 1. / precision;
+    chart->addSeries(new QSplineSeries(this));
+    chart->createDefaultAxes();
+    chart->axes(Qt::Vertical).last()->setRange(usableMin, max);
+    chart->axes(Qt::Horizontal).last()->setRange(usableMin, max);
+    auto x = usableMin * 1.0;
+    while (x <= max)
+    {
+        try
+        {
+            usedValue = x;
+            auto const res = expression.value();
+            qobject_cast<QSplineSeries *>(chart->series().last())->append(x, res);
+        }
+        catch (const std::exception &error)
+        {
+            // Just don't draw it
+            // We have a blank, so we create a new series
+            chart->addSeries(new QSplineSeries(this));
+            chart->createDefaultAxes();
+            chart->axes(Qt::Vertical).last()->setRange(usableMin, max);
+            chart->axes(Qt::Horizontal).last()->setRange(usableMin, max);
+        }
+        x += step;
+    }
 }

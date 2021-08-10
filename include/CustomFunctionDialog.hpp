@@ -11,6 +11,8 @@
 
 class CustomFunctionDialog : public QDialog
 {
+Q_OBJECT
+
 public:
     explicit CustomFunctionDialog(QWidget *parent);
 
@@ -21,6 +23,9 @@ private:
 
 private slots:
     void validateFunction();
+
+signals:
+    void functionValidated(exprtk::expression<double> &expression, double &usedValue);
 };
 
 

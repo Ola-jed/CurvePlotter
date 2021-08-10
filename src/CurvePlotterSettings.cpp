@@ -7,7 +7,7 @@ CurvePlotterSettings::CurvePlotterSettings(QWidget *parent, int precision, int m
                                                                        themeIndex(theme),
                                                                        animationIndex(animation)
 {
-    setFixedSize(500, 250);
+    setFixedSize(800, 250);
     buildComponents();
     initComponents();
     makeConnections();

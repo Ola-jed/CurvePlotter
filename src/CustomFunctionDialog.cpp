@@ -32,5 +32,5 @@ void CustomFunctionDialog::validateFunction()
         QMessageBox::warning(this, "Function", "Cannot parse function");
         return;
     }
-    emit functionValidated(expression, x);
+    emit functionValidated(functionEdit->text(),expression, x);//cos(x)+(sin(x))^2+x
 }

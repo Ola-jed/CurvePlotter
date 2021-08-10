@@ -25,7 +25,8 @@ private slots:
     void validateFunction();
 
 signals:
-    void functionValidated(exprtk::expression<double> &expression, double &usedValue);
+    void functionValidated(const QString &expressionAsStr, exprtk::expression<double> &expression,
+                           double &usedValue);
 };
 
 

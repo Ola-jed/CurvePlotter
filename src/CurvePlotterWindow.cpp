@@ -280,15 +280,19 @@ void CurvePlotterWindow::onAbout()
 void CurvePlotterWindow::onCustomFunction()
 {
     auto customFunctionDialog = new CustomFunctionDialog(this);
-    connect(customFunctionDialog, &CustomFunctionDialog::functionValidated,this, &CurvePlotterWindow::plotCustomFunction);
+    connect(customFunctionDialog, &CustomFunctionDialog::functionValidated, this,
+            &CurvePlotterWindow::plotCustomFunction);
     customFunctionDialog->show();
 }
 
 /// Plot a custom function entered by the user
 /// \param expression
 /// \param usedValue
-void CurvePlotterWindow::plotCustomFunction(exprtk::expression<double> &expression, double &usedValue)
+void
+CurvePlotterWindow::plotCustomFunction(const QString &expressionAsStr, exprtk::expression<double> &expression,
+                                       double &usedValue)
 {
+    statusBar->showMessage(expressionAsStr);
     const auto usableMin = -1 * min;
     chart->removeAllSeries();
     auto const step = (max - usableMin) * 1. / precision;
@@ -301,6 +305,7 @@ void CurvePlotterWindow::plotCustomFunction(exprtk::expression<double> &expressi
     {
         try
         {
+
             usedValue = x;
             auto const res = expression.value();
             qobject_cast<QSplineSeries *>(chart->series().last())->append(x, res);

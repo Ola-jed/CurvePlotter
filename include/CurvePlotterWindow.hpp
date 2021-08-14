@@ -47,8 +47,8 @@ private:
     static constexpr int DEFAULT_PRECISION = 29;
     static constexpr int DEFAULT_MIN       = 0;
     static constexpr int DEFAULT_MAX       = 10;
-    static constexpr int DEFAULT_ANIMATION = 10;
-    static constexpr int DEFAULT_THEME     = 10;
+    static constexpr int DEFAULT_ANIMATION = QChart::SeriesAnimations;
+    static constexpr int DEFAULT_THEME     = QChart::ChartThemeDark;
     int                  precision         = appSettings.value("precision", DEFAULT_PRECISION).toInt();
     int                  min               = appSettings.value("minRange", DEFAULT_MIN).toInt();
     int                  max               = appSettings.value("maxRange", DEFAULT_MAX).toInt();

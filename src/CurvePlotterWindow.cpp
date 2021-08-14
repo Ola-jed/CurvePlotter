@@ -227,8 +227,8 @@ void CurvePlotterWindow::plotBaseFunction(const std::function<double(double)> &f
 void CurvePlotterWindow::onSettings()
 {
     auto plotterSettings = new CurvePlotterSettings(this, precision, min, max,
-                                                    appSettings.value("animation", 2).toInt(),
-                                                    appSettings.value("theme", 2).toInt());
+                                                    appSettings.value("animation", DEFAULT_ANIMATION).toInt(),
+                                                    appSettings.value("theme", DEFAULT_THEME).toInt());
     connect(plotterSettings, &CurvePlotterSettings::precisionChanged, [this](int prec) {
         appSettings.setValue("precision", prec);
         precision = prec;

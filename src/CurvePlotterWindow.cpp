@@ -288,9 +288,9 @@ void CurvePlotterWindow::onCustomFunction()
 /// Plot a custom function entered by the user
 /// \param expression
 /// \param usedValue
-void
-CurvePlotterWindow::plotCustomFunction(const QString &expressionAsStr, exprtk::expression<double> &expression,
-                                       double &usedValue)
+void CurvePlotterWindow::plotCustomFunction(const QString &expressionAsStr,
+                                            exprtk::expression<double> &expression,
+                                            double &usedValue)
 {
     statusBar->showMessage(expressionAsStr);
     const auto usableMin = -1 * min;

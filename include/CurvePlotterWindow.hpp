@@ -22,7 +22,9 @@
 #include "CustomFunctionDialog.hpp"
 #include "CurvePlotterSettings.hpp"
 
-using namespace QtCharts;
+#if QT_VERSION < 0x06
+    using namespace QtCharts;
+#endif
 
 class CurvePlotterWindow : public QMainWindow
 {

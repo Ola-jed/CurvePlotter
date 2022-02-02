@@ -4,8 +4,8 @@
 CurvePlotterSettings::CurvePlotterSettings(QWidget *parent, int precision, int minRange, int maxRange,
                                            int animation, int theme) : QDialog(parent), precision(precision),
                                                                        minRange(minRange), maxRange(maxRange),
-                                                                       themeIndex(theme),
-                                                                       animationIndex(animation)
+                                                                       animationIndex(animation),
+                                                                       themeIndex(theme)
 {
     setFixedSize(800, 250);
     setWindowTitle("CP Settings");
